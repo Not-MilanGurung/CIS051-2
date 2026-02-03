@@ -1,0 +1,84 @@
+/* Global Variables */
+:root {
+    --primary-color: royalblue;
+    --secondary-color: red;
+    --text-color: black;
+    --background-color: rgb(50, 50, 50);
+    --contrasting-white: white;
+    --header-height: 4rem;
+    --footer-height: 4rem;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: white;
+}
+
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    height: var(--header-height);
+    width: 100%;
+    text-align: center;
+    z-index: 1000;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: var(--footer-height);
+    width: 100%;
+    text-align: center;
+    z-index: 1000;
+}
+
+main {
+    position: fixed;
+    height: calc(100dvh - var(--header-height) - var(--footer-height));
+    top: var(--header-height);
+    overflow-y: auto;
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.notification-badge {
+    position: relative;
+}
+
+.notification-badge img{
+    position: absolute;
+    width: 2rem;
+    right: 4vw;
+    top: 1rem;
+    z-index: 20;
+}
+
+.sticky-tile {
+    border: 2px solid red;
+    margin: 5px auto;
+    padding: 12px;
+    width: 80%;
+    z-index: 10;
+}
+
+.sticky-tile h2 {
+    position: sticky;
+    top: 0;
+    padding: 4px;
+    background-color: var(--background-color);
+    color: white;
+    text-align: center;
+    z-index: 100;
+}
