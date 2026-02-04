@@ -1,0 +1,100 @@
+:root {
+  --bg: #ffffff;
+  --text: #222;
+  --card: #f4f4f4;
+  --error: #d32f2f;
+  --success: #2e7d32;
+}
+
+body.dark {
+  --bg: #121212;
+  --text: #f5f5f5;
+  --card: #1e1e1e;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-section {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.product-card {
+    background: var(--card);
+    padding: 20px;
+    width: 280px;
+    border-radius: 8px;
+    text-align: center;
+}
+.form-section {
+  background: var(--card);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 400px;
+  border-radius: 8px;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.price {
+  font-weight: bold;
+  display: block;
+  margin: 10px 0;
+}
+
+button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.form-group input.invalid {
+  border: 2px solid var(--error);
+}
+
+.error {
+  color: var(--error);
+  font-size: 0.85rem;
+}
+
+.success-msg {
+  color: var(--success);
+  margin-top: 10px;
+}
+
+.password-wrapper {
+  display: flex;
+  gap: 5px;
+}
+
+.toggle {
+  font-size: 0.8rem;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Product Card & Registration Form</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Web Development Lab</h1>
+    <button id="themeToggle">🌙 Toggle Theme</button>
+  </header>
+
+  <!-- Product Card -->
+  <section class="product-section">
+    <div class="product-card">
+      <img src="./images/Headphones.jpg" alt="Product Image" id="productImage">
+      <h2>Wireless Headphones</h2>
+      <p>High-quality wireless headphones with noise cancellation.</p>
+      <span class="price">$99.99</span>
+      <button id="addToCart">Add to Cart</button>
+      <p id="cartMessage" class="success-msg"></p>
+    </div>
+    <div class="product-card">
+      <img src="./images/Type-C-Charger.jpeg" alt="Product Image" id="productImage">
+      <h2>Type C Charger</h2>
+      <p>Type C Charger with fast charging capability</p>
+      <span class="price">$39.99</span>
+      <button id="addToCart">Add to Cart</button>
+      <p id="cartMessage" class="success-msg"></p>
+    </div>
+  </section>
+
+  <!-- Registration Form -->
+  <section class="form-section">
+    <h2>User Registration</h2>
+    <form id="registerForm" novalidate>
+      
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="fullName" />
+        <small class="error"></small>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" />
+        <small class="error"></small>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" />
+          <button type="button" class="toggle" data-target="password">Show</button>
+        </div>
+        <small class="error"></small>
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="confirmPassword" />
+          <button type="button" class="toggle" data-target="confirmPassword">Show</button>
+        </div>
+        <small class="error"></small>
+      </div>
+
+      <button type="submit">Register</button>
+      <p id="formSuccess" class="success-msg"></p>
+    </form>
+  </section>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
