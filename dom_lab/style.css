@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.highlight {
+  background-color: yellow;
+  transition: background-color 0.3s ease;
+}
+
+.blue-text {
+    color: blue;
+}
+
+a {
+    text-decoration: none;
+    border: 1px solid;
+    border-radius: 6px;
+    padding: 2px 5px;
+    font-weight: bold;
+    color: white;
+    background: rgb(116, 116, 155);
+}
+
+.controls button {
+  margin: 5px;
+}
+
+.list-item {
+  margin: 5px 0;
+}
+
+button {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+#formMessage {
+  margin-top: 10px;
+  font-weight: bold;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Manipulation Lab</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- Task 1 -->
+   <header>
+       <h1 id="mainHeading">DOM Manipulation Lab</h1>
+       <nav>
+            <a href="./todo/app.html" id="navTODO">To DO app</a>
+       </nav>
+   </header>
+   <main>
+
+       <p id="mainPara" class="text">This is the initial paragraph.</p>
+     
+       <button id="updateBtn">Update Paragraph</button>
+     
+       <ul id="itemList" class="list">
+         <li class="list-item">Item 1</li>
+         <li class="list-item">Item 2</li>
+         <li class="list-item">Item 3</li>
+       </ul>
+     
+       <p id="lengthDisplay"></p>
+     
+       <!-- Task 3 -->
+       <div class="controls">
+         <button id="textColorBtn">Change Text Color</button>
+         <button id="bgColorBtn">Change Background</button>
+         <button id="increaseFontBtn">A+</button>
+         <button id="decreaseFontBtn">A-</button>
+         <button id="toggleClassBtn">Toggle Highlight</button>
+       </div>
+     
+       <!-- Task 5 -->
+       <h3>Dynamic List</h3>
+       <input type="text" id="itemInput" placeholder="Enter item">
+       <button id="addItemBtn">Add Item</button>
+     
+       <!-- Task 7 -->
+       <h3>Form Validation</h3>
+       <form id="userForm">
+         <input type="text" id="name" placeholder="Name"><br>
+         <input type="email" id="email" placeholder="Email"><br>
+         <input type="password" id="password" placeholder="Password"><br>
+         <button type="submit">Submit</button>
+       </form>
+       <p id="formMessage"></p>
+   </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
