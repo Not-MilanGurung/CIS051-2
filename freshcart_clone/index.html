@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FreshCart</title>
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet"/>
+
 </head>
 <body>
     <header>
-        <div class="flex md:px-[15%] bg-gray-50 text-gray-600 justify-between py-2">
+        <div class="flex md:px-[12%] bg-gray-50 text-gray-600 justify-between py-2">
             <div>
                 Super Value Deals - Save more with coupons
             </div>
@@ -21,7 +21,7 @@
                 <i class="ri-arrow-down-s-line"></i>
             </div>
         </div>
-        <nav class="flex flex-cols md:px-[15%] py-4">
+        <nav class="md:px-[12%] pt-4 pb-2 border-b space-y-2">
             <div class="flex w-full justify-between space-x-4">
                 <img class="w-1/5" src="https://themewagon.github.io/freshcart/assets/images/logo/freshcart-logo.svg" alt="FreshCart Logo">
                 <div class="flex w-2/5 relative items-center">
@@ -46,8 +46,30 @@
                     <i class="ri-handbag-line"></i>
                 </div>
             </div>
-            <div>
-
+            <div class="flex items-center">
+                <div class="flex items-center px-4 h-[2.5rem] rounded-md bg-green-500 space-x-2 text-white">
+                    <i class="ri-gallery-view-2"></i>
+                    <p>All Departments</p>
+                </div>
+                <div>
+                    <ul class="flex px-4 py-2 space-x-6 items-center justify-between">
+                        <li><a href="" class="hover:text-green-500">Home</a></li>
+                        <li class="group relative">
+                            <div>
+                                Dropdown Menu
+                                <i class="ri-arrow-drop-down-line"></i>
+                            </div>
+                            <div class="py-1 w-full absolute group-hover:inline hidden shadow-lg hover:bg-gray-50">
+                                <a href="#" class="block mx-1 px-4 py-2 text-sm rounded-md  hover:bg-gray-200 hover:outline-hidden">Dropdown Link</a>
+                                <a href="#" class="block mx-1 px-4 py-2 text-sm rounded-md  hover:bg-gray-200 hover:outline-hidden">Dropdown Link</a>
+                                <a href="#" class="block mx-1 px-4 py-2 text-sm rounded-md  hover:bg-gray-200 hover:outline-hidden">Dropdown Link</a>
+                                <a href="#" class="block mx-1 px-4 py-2 text-sm rounded-md  hover:bg-gray-200 hover:outline-hidden">Dropdown Link</a>
+                            </div>
+                        </li>
+                        <li><a href="" class="hover:text-green-500">Mega Menu</a></li>
+                        <li><a href="" class="hover:text-green-500">Dashboard</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>

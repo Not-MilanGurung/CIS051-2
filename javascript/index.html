@@ -3,11 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  -->
     <script src="./if_else_script.js"></script>
     <script src="./loop_script.js"></script>
+    
     <title>Document</title>
 </head>
 <body>
+    <h1>Hello World</h1>
+    <p>
+        This is a paragraph.
+    </p>
+    <button onclick="greet('Dante')" class="but">Greet</button>
+    <button onclick="changeParagraph()">Change</button>
+    <script>
+        greet = (name) => {
+            alert(`Hello ${name}`);
+            let button = document.getElementsByClassName('but').item(0);
+            console.log(button);
+            button.innerHTML = "New";
+        }
 
+        function changeParagraph(){
+            let firstParagraph = document.getElementsByTagName('p').item(0);
+            console.log(firstParagraph);
+            firstParagraph.innerHTML = "CHanged paragraph <b> Bold </b>";
+        }
+    </script>
 </body>
 </html>
