@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2f80ed;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(236, 236, 236);
+}
+
+/* HEADER */
+header {
+    background-color: white;
+    padding: 15px 5%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+header h1 {
+    margin-bottom: 8px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav ul li {
+    background: rgb(234, 234, 234);
+    border-radius: 6px;
+    padding: 8px 12px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* DASHBOARD LAYOUT */
+.dashboard {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 30px;
+    padding: 2rem 5%;
+    align-items: start;
+}
+
+/* CARD STYLE */
+.card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* FORM CARD (LEFT) */
+.form-card {
+    grid-row: span 2;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+input, select, textarea {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 0.95rem;
+    background: #f9f9f9;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: white;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* BUTTON */
+button {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* NUMBER CARDS */
+.cardRows {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.numberCard {
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    padding: 1rem;
+    background-color: #f4f6fb;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 1.1rem;
+}
+
+.values {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#balanceCard {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* TRANSACTIONS */
+.transactions-card h2 {
+    margin-bottom: 1rem;
+}
+
+.transaction-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: #f4f4f4;
+    border-radius: 10px;
+}
+
+.transaction .info {
+    display: flex;
+    flex-direction: column;
+}
+
+.transaction .amount {
+    font-weight: bold;
+}
+
+.transaction.income .amount {
+    color: green;
+}
+
+.transaction.expense .amount {
+    color: red;
+}
+
+.empty {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card {
+        grid-row: auto;
+    }
+}
+
+/* TABLE WRAPPER (for horizontal scroll on small screens) */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* TABLE BASE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+}
+
+/* HEADER */
+thead {
+    background-color: #f4f6fb;
+}
+
+th {
+    text-align: left;
+    padding: 12px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #555;
+}
+
+/* BODY CELLS */
+td {
+    padding: 12px;
+    border-top: 1px solid #eee;
+    font-size: 0.95rem;
+}
+
+/* ZEBRA STRIPES */
+tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+/* HOVER EFFECT */
+tbody tr:hover {
+    background-color: #f1f5ff;
+}
+
+/* AMOUNT COLORS */
+td.amount-income {
+    color: green;
+    font-weight: bold;
+}
+
+td.amount-expense {
+    color: red;
+    font-weight: bold;
+}
+
+/* EMPTY STATE */
+.empty-row td {
+    text-align: center;
+    color: #777;
+    padding: 20px 0;
+}

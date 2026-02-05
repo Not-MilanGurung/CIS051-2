@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Insight</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Personal Expense Insight</h1>
+    </header>
+
+    <main class="dashboard">
+
+        <!-- LEFT: ADD TRANSACTION -->
+        <section class="card form-card">
+            <h2>Add Transaction</h2>
+            <form name="transactionForm" onsubmit="addTransaction(); return false"> 
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="desc">Description</label>
+                <textarea id="desc" name="desc" required></textarea>
+
+                <label for="type">Type</label>
+                <select id="type" name="type" required>
+                    <option value="expense">Expense</option>
+                    <option value="income">Income</option>
+                </select>
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                    <option value="shopping">Shopping</option>
+                    <option value="food">Food</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <div class="form-row">
+                    <div>
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div>
+                        <label for="time">Time</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+                </div>
+
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" name="amount" min="1" required>
+
+                <button type="submit">Add</button>
+            </form>
+        </section>
+
+        <!-- RIGHT TOP: NUMBER CARDS -->
+        <section class="card numbers-card">
+            <div class="cardRows">
+                <div class="numberCard" id="balanceCard">
+                    <div>Balance</div>
+                    <div class="values" id="balance">0</div>
+                </div>
+                <div class="numberCard">
+                    <div>Income</div>
+                    <div class="values" id="income">0</div>
+                </div>
+                <div class="numberCard">
+                    <div>Expense</div>
+                    <div class="values" id="expense">0</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RIGHT BOTTOM: TRANSACTIONS -->
+        <section class="card transactions-card">
+            <h2>Transactions</h2>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionTable">
+                        <tr class="empty-row">
+                            <td colspan="5">No transactions yet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+    <script src="./js/script.js"></script>
+</body>
+</html>
