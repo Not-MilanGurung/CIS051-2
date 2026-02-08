@@ -1,0 +1,100 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+header {
+    background-color: #80d0c7;
+    padding: 24px 15%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+#logo {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+#search-section {
+    background-color: #13547a;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 15%;
+    justify-items: center;
+    align-items: center;
+}
+
+#search-section div:nth-child(1) {
+    color: white;
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+#search-section div:nth-child(2) {
+    /* color: #13547a; */
+    font-size: 1.2rem;
+}
+
+#search {
+    background-color: white;
+    display: flex;
+    border-radius: 5rem;
+    gap: 10px;
+    padding: 10px 24px;
+    font-size: 1.4rem;
+    width: 80%;
+    margin-top: 40px;
+    align-items: center;
+}
+
+#search input {
+    display: flex;
+    border: 0;
+    font-size: 1.4rem;
+    width: 100%;
+}
+
+#search button {
+    border-radius: 2rem;
+    font-size: 1.4rem;
+    color: white;
+    background-color: #80d0c7;
+    border: 0;
+    padding: 16px 32px;
+}
+
+#card-section {
+    background-color: #80d0c7;
+    border-bottom-left-radius: 4rem;
+    border-bottom-right-radius: 4rem;
+    position: relative;
+    display: flex;
+    padding: 24px 15%;
+}
+
+.card {
+    border-radius: 4rem;
+}
+
