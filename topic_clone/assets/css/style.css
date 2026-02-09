@@ -14,8 +14,10 @@ a {
 }
 
 header {
-    background-color: #80d0c7;
+    background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
     padding: 24px 15%;
+    position: sticky;
+    top: 0;
 }
 
 nav {
@@ -35,15 +37,21 @@ nav ul {
     font-weight: bold;
 }
 
+#profile {
+    font-size: 1.5rem;
+    background-color: white;
+    border-radius: 10rem;
+    padding: 10px 14px;
+}
 
 #search-section {
-    background-color: #13547a;
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 20px 15%;
+    padding: 15vh 20%;
     justify-items: center;
     align-items: center;
+    background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 }
 
 #search-section div:nth-child(1) {
@@ -85,16 +93,112 @@ nav ul {
     padding: 16px 32px;
 }
 
-#card-section {
+
+#card-background {
     background-color: #80d0c7;
     border-bottom-left-radius: 4rem;
     border-bottom-right-radius: 4rem;
     position: relative;
+    height: 45vh;
+}
+
+#card-section {
+    position: absolute;
     display: flex;
-    padding: 24px 15%;
+    top: -12vh;
+    padding: 0 20%;
+}
+
+#card-section > .card:nth-child(2) {
+    position: relative;
+    background-image: url("../multimedia/businesswoman-using-tablet-analysis.jpg");
+    background-size: auto 100%;
+
+    div:nth-child(2) {
+        color: white;
+    }
+}
+
+#card-section .overlay {
+    background-image: linear-gradient(15deg, rgb(19, 84, 122) 0%, rgb(128, 208, 199) 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    opacity: 0.85;
+    border-radius: inherit;
+    z-index: -1;
 }
 
 .card {
-    border-radius: 4rem;
+    border-radius: 2rem;
+    background-color: white;
+    padding: 30px 30px;
+    margin: 10px;
+    position: relative;
+    z-index: 4;
 }
 
+
+.card > div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.card > div:nth-child(2) {
+    color: gray;
+    font-size: 1.4rem;
+    padding-right: 10%;
+    margin-top: 10px;
+}
+
+.card button {
+    background-color: #80d0c7;
+    border: 0;
+    border-radius: 2rem;
+    padding: 15px 30px;
+    font-size: 1.4rem;
+    color: white;
+    margin-top: 30px;
+}
+
+.card > div:nth-child(4) {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 1.4rem;
+    position: absolute;
+    bottom: 30px;
+    color: white;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card i {
+    font-size: 2rem;
+}
+
+#card-section .card:nth-of-type(1) {
+    width: 40%;
+}
+
+#card-section .card:nth-of-type(2) {
+    width: 60%;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.card-number {
+    border-radius: 4px;
+    background-color: #1e84c0;
+    padding: 4px;
+    color: white;
+}
