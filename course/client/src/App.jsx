@@ -1,30 +1,30 @@
-import './App.css'
+import './App.css';
+import InfoCard from './components/InfoCard';
 // import userIcon from './assets/user-fill.svg'
+import NavBar from './components/NavbarComponent';
+// Images for info card
+import tailwindImage from "./assets/tailwindcss.png";
+import typescripImage from "./assets/TypeScript_guide.webp";
+import reactLogo from "./assets/react-logo.jpg";
 
 function App() {
-
+	const courses = [
+		{name: "Tailwind", duration: 2, image: tailwindImage},
+		{name: "Typescript", duration: 1, image: typescripImage},
+		{name: "React", duration: 3, image: reactLogo},
+	];
 	return (
 		<>
-			<header class="flex h-20 items-center px-30 pt-4 shadow">
-				<div class="text-xl w-1/4 font-bold">Course Management System</div>
-				<nav class="w-2/4 h-full">
-					<ul class="flex h-full font-medium">
-						<li class="flex items-center px-5 hover:text-blue-600 hover:bg-linear-to-b from-0% to-blue-100 cursor-pointer">Dashboard</li>
-						<li class="flex items-center px-5 hover:text-blue-600 hover:bg-linear-to-b from-0% to-blue-100 cursor-pointer">Courses</li>
-						<li class="flex items-center px-5 hover:text-blue-600 hover:bg-linear-to-b from-0% to-blue-100 cursor-pointer">Calender</li>
-						<li class="flex items-center px-5 hover:text-blue-600 hover:bg-linear-to-b from-0% to-blue-100 cursor-pointer">About</li>
-					</ul>
-				</nav>
-				<div class="flex justify-end space-x-4 w-1/4">
-					<button class="text-white rounded-md bg-gray-600 hover:bg-gray-400 px-4 py-2 cursor-pointer">Login</button>
-					<button class="text-white rounded-md bg-blue-600 hover:bg-blue-400 px-4 py-2 cursor-pointer">SignUp</button>
+			<NavBar title="Course Management"/>
+			<main className="h-screen bg-blue-400">
+				<div className="flex-row lg:flex justify-items-center lg:justify-center space-y-10 lg:space-y-0 lg:space-x-10 py-10">
+					{courses.map( course =>
+						<InfoCard name={course.name} duration={course.duration} image={course.image}/>
+					)}
 				</div>
-			</header>
-			<main class="h-screen bg-blue-400">
-
 			</main>
 		</>
 	)
 }
 
-export default App
+export default App;
