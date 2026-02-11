@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workshop Registration</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<main class="container">
+
+    <h1>Workshop Registration</h1>
+
+    <!-- Registration Form -->
+    <section aria-labelledby="formTitle">
+        <h2 id="formTitle">Register Participant</h2>
+
+        <form id="registrationForm" novalidate>
+            
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" />
+                <small class="error-message"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" />
+                <small class="error-message"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="workshop">Workshop Type</label>
+                <select id="workshop">
+                    <option value="">Select Workshop</option>
+                    <option>Web Development</option>
+                    <option>Artificial Intelligence</option>
+                    <option>UI/UX Design</option>
+                </select>
+                <small class="error-message"></small>
+            </div>
+
+            <fieldset class="form-group">
+                <legend>Experience Level</legend>
+                <label><input type="radio" name="experience" value="Beginner"> Beginner</label>
+                <label><input type="radio" name="experience" value="Intermediate"> Intermediate</label>
+                <label><input type="radio" name="experience" value="Advanced"> Advanced</label>
+                <small class="error-message"></small>
+            </fieldset>
+
+            <div class="form-group checkbox-group">
+                <label>
+                    <input type="checkbox" id="agreement">
+                    I agree to the Code of Conduct
+                </label>
+                <small class="error-message"></small>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+    </section>
+
+    
+    <!-- Participants List -->
+    <section>
+        <h2>Participants</h2>
+        <!-- Filter -->
+        <section class="filter-section">
+            <label for="filterWorkshop">Filter by Workshop:</label>
+            <select id="filterWorkshop">
+                <option value="All">All</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <option value="UI/UX Design">UI/UX Design</option>
+            </select>
+        </section>
+        <p id="emptyState">No participants registered yet</p>
+        <div id="participantList"></div>
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

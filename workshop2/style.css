@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+}
+
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+input, select, button {
+    padding: 8px;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #0077cc;
+    color: white;
+    cursor: pointer;
+}
+
+input:focus, select:focus {
+    outline: 2px solid #0077cc;
+}
+
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.error {
+    border: 1px solid red;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    height: 14px;
+}
+
+.participant-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.priority {
+    border-left: 5px solid gold;
+    background-color: #fff9db;
+}
+
+.hidden {
+    display: none;
+}
+
+.actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 10px;
+}
+
+.confirm-box {
+    background: #ffeaea;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid red;
+}
