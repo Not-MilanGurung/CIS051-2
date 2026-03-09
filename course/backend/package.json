@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "0.1.0",
+  "description": "Backend for the course management system",
+  "keywords": [
+    "CMS",
+    "ManagementSystem"
+  ],
+  "license": "ISC",
+  "author": "notMilan",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
