@@ -9,5 +9,3 @@ const subtract = (a, b) => {
 const mult = (a, b) => {
 	return a * b;
 }
-
-module.exports = {sum, subtract, mult};
