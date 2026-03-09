@@ -13,7 +13,6 @@ function LoginForm(){
     };
 
     const handleSubmit = (e) => {
-        console.log(inputs);
         e.preventDefault();
     }
 

@@ -13,8 +13,8 @@ function HomePage() {
     return (
         <main className="h-screen bg-blue-400">
 				<div className="flex-row lg:flex justify-items-center lg:justify-center space-y-10 lg:space-y-0 lg:space-x-10 py-10">
-					{courses.map( course =>
-						<CourseCard name={course.name} duration={course.duration} image={course.image}/>
+					{courses.map( (course, index) =>
+						<CourseCard key={index} name={course.name} duration={course.duration} image={course.image}/>
 					)}
 				</div>
         </main>

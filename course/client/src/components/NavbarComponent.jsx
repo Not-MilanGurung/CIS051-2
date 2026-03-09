@@ -9,6 +9,7 @@ function NavBar({title}) {
 						<Link to="/" className="flex items-center px-5 hover:text-blue-600 hover:bg-linear-to-b from-0% to-blue-100 cursor-pointer">Dashboard</Link>
 						<Link to="/about" className="flex items-center px-5 hover:text-blue-600 hover:bg-linear-to-b from-0% to-blue-100 cursor-pointer">About</Link>
 						<Link to="/contact" className="flex items-center px-5 hover:text-blue-600 hover:bg-linear-to-b from-0% to-blue-100 cursor-pointer">Contact</Link>
+						<Link to="/form" className="flex items-center px-5 hover:text-blue-600 hover:bg-linear-to-b from-0% to-blue-100 cursor-pointer">Form</Link>
 					</ul>
 				</nav>
 				<div className="flex justify-center lg:justify-end space-x-4 lg:w-1/4">

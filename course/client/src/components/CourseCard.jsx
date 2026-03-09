@@ -1,5 +1,4 @@
 function CourseCard({name, duration, image}) {
-    console.log(name, duration, image);
     return(
         <div className="flex-row max-w-[300px] shadow bg-white rounded-lg">
             <div>

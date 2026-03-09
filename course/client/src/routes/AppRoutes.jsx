@@ -6,6 +6,7 @@ import AboutPage from '../pages/AboutPage';
 import ContactPage from "../pages/ContactPage";
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
+import FormPage from "../pages/FormPage";
 
 function AppRoute() {
     return(
@@ -17,6 +18,7 @@ function AppRoute() {
 				<Route path="/contact" element={<ContactPage />}/>
 				<Route path="/login" element={<LoginPage />}/>
 				<Route path="/signup" element={<SignUpPage />}/>
+				<Route path="/form" element={<FormPage />}/>
 			</Routes>
         </BrowserRouter>
     )
