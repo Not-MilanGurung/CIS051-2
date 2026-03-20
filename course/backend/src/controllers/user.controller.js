@@ -1,89 +1,254 @@
+const { NODE_ENV } = require('../config/config');
 const userService = require('../services/user.service');
-const store = require('../data/store');
+
+
+const validateRegister = (data) => {
+	const errors = [];
+	if (!data) {
+		errors.push("Body is required");
+		return errors;
+	} 
+	const isNameEmpty = !data.name || data.name.trim() === '';
+	if(isNameEmpty){
+		errors.push("Name is required");
+	}
+
+	const isEmailEmpty = !data.email || data.email.trim() === '';
+	if (isEmailEmpty) {
+		errors.push("Email is required");
+	} else if (!data.email.includes('@')) {
+		errors.push('Please provide a valid email address');
+	}
+	
+	const isPasswordEmpty = !data.password || data.password === "";
+	if (isPasswordEmpty) {
+		errors.push("Password is required");
+	} else if (data.password.length < 8) {
+		errors.push("Password must be at least 8 characters");
+	}
+
+	return errors;
+}
+
+const validateLogin = (data) => {
+	const errors = [];
+
+	const isEmailEmpty = !data.email || data.email.trim() === '';
+	if (isEmailEmpty) {
+		errors.push('Email is required');
+	}
+
+	const isPasswordEmpty = !data.password || data.password.trim() === '';
+	if (isPasswordEmpty) {
+		errors.push('Password is required');
+	}
+
+	return errors;
+}
+
+const validatetUpdateProfile = (data) => {
+	const errors = [];
+	const allowedFields = ['name', 'phone', 'address', 'avatar'];
+
+	const updateKeys = Object.keys(data);
+	const invalidFields = updateKeys.filter(key => !allowedFields.includes(key));
+
+	if (invalidFields.length > 0) {
+		errors.push(`Cannot update these fields: ${invalidFields.join(", ")}`);
+	}
+
+	return errors;
+}
+
+const validateChangePassword = (data) => {
+	const errors = [];
+
+	const isCurrentPasswordEmpty = !data.currentPassword || data.currentPassword === '';
+	if (isCurrentPasswordEmpty) {
+		errors.push('Current password is required');
+	}
+
+	const isNewPasswordEmpty = !data.newPassword || data.newPassword === '';
+	if (isNewPasswordEmpty) {
+		errors.push('New password is required');
+	} else if (data.newPassword.length < 8) {
+		errors.push('New password must be at least 8 characters');
+	}
+	
+	return errors;
+}
+
+const handleError = (res, error) => {
+	console.error('Controller Error:', error.message);
+	console.error('\n');
+	const statusCode = error.statusCode || 500;
+	res.status(statusCode).json({
+		success: false,
+		message: error.message || 'Internal server error',
+		...(NODE_ENV === 'development' && { stack: error.stac}),
+	});
+};
+
+const register = async (req, res) => {
+	try {
+		const errors = validateRegister(req.body);
+		if (errors.length > 0) {
+			return res.status(400).json({
+				success: false,
+				message: 'Validation failed',
+				errors: errors,
+			});
+		};
+
+		const { name, email, password, role } = req.body;
+		const result = await userService.registerUser({ name, email, password, role });
+		res.status(201).json({ success: true, message: result.message, data: result.data});
+	} catch (error) {
+		handleError(res, error);
+	}
+}
+
+const login = async (req, res) => {
+  try {
+    // Simple validation
+    const errors = validateLogin(req.body);
+    if (errors.length > 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Validation failed",
+        errors: errors,
+      });
+    }
+
+    const { email, password } = req.body;
+    const result = await userService.loginUser(email, password);
+    res.status(200).json({ success: true, message: result.message, data: result.data });
+  } catch (error) {
+    handleError(res, error);
+  }
+};
+
+const getProfile = async (req, res) => {
+  try {
+    const result = await userService.getUserProfile(req.user.id);
+    res.status(200).json({ success: true, data: result.data });
+  } catch (error) {
+    handleError(res, error);
+  }
+};
+
+const updateProfile = async (req, res) => {
+  try {
+    // Simple validation
+    const errors = validatetUpdateProfile(req.body);
+    if (errors.length > 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Validation failed",
+        errors: errors,
+      });
+    }
+
+    const result = await userService.updateUserProfile(req.user.id, req.body);
+    res.status(200).json({ success: true, message: result.message, data: result.data });
+  } catch (error) {
+    handleError(res, error);
+  }
+};
 
 const getAllUsers = async (req, res) => {
-	try{
-		const users = await userService.getAllUsers();
-		res.status(200).json(users);
-	} catch (err){
-		console.log(err);
-		res.status(500).json({ message: err.message });
-	}
+  try {
+    const options = {
+      page: req.query.page,
+      limit: req.query.limit,
+      includeInactive: req.query.includeInactive === "true",
+    };
+    const result = await userService.getAllUsers(options);
+    res.status(200).json({ success: true, data: result.data });
+  } catch (error) {
+    handleError(res, error);
+  }
 };
 
 const getUserById = async (req, res) => {
-	try{
-		const id = req.params.id;
-		const user = await userService.getUserById(id);
-		if (!user) {
-			return res.status(404).json( { error: "User not found"});
-		}
-		res.status(200).json(user);
-	} catch (err) {
-		console.log(err);
-		res.status(500).json({ message: err.message });
-	}
+  try {
+    const result = await userService.getUserProfile(req.params.id);
+    res.status(200).json({ success: true, data: result.data });
+  } catch (error) {
+    handleError(res, error);
+  }
+};
+
+const changePassword = async (req, res) => {
+  try {
+    // Simple validation
+    const errors = validateChangePassword(req.body);
+    if (errors.length > 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Validation failed",
+        errors: errors,
+      });
+    }
+
+    const { currentPassword, newPassword } = req.body;
+    const result = await userService.changePassword(req.user.id, currentPassword, newPassword);
+    res.status(200).json({ success: true, message: result.message });
+  } catch (error) {
+    handleError(res, error);
+  }
+};
+
+const deactivateUser = async (req, res) => {
+  try {
+    const result = await userService.deactivateUser(req.params.id);
+    res.status(200).json({ success: true, message: result.message });
+  } catch (error) {
+    handleError(res, error);
+  }
 };
 
 const createUser = async (req, res) => {
-	try{
-		const name = req.body.name;
-		const email = req.body.email;
-		const password = req.body.password;
-	
-		if (!name || !email || !password) {
-			return res.status(400).json({error: "Insufficient fields"});
-		}
-	
-		const newUser = await userService.createUser({name, email, password});
-		res.status(201).json(newUser);
-	} catch(err) {
-		console.log(err);
-		res.status(500).json({ message: err.message });
-	}
-}
+  try {
+    // Simple validation (same as register)
+    const errors = validateRegister(req.body);
+    if (errors.length > 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Validation failed",
+        errors: errors,
+      });
+    }
 
-const updateUser = async (req, res) => {
-	try{
-		const id = req.params.id;
-		const name = req.body.name;
-		const email = req.body.email;
-		const password = req.body.passowrd;
-
-		if (!name && !email && !password) {
-			return res.status(400).json({ error: "One updated field is required"});
-		};
-		const update = {};
-		if (name) update.name = name;
-		if (email) update.email = email;
-		if (password) update.password = password;
-
-		const updatedUser = await userService.updateUser(id, update);
-		res.status(200).json(updatedUser);
-	} catch (err) {
-		console.log(err);
-		res.status(500).json({ message: err.message });
-	}
+    const { name, email, password, role } = req.body;
+    const result = await userService.registerUser({ name, email, password, role });
+    res.status(201).json({ success: true, message: result.message, data: result.data });
+  } catch (error) {
+    handleError(res, error);
+  }
 };
 
-const deleteUserById = async (req, res) => {
-	try {
-		const id = req.params.id;
-		const deletedUser = await userService.deleteUserById(id);
-		if (!deletedUser) {
-			res.status(404).json({ error: "User not found"});
-		}
-		res.status(200).json({ message: "Deleted the user"});
-	} catch (err) {
-		console.log(err);
-		res.status(500).json({ message: err.message });
-	}
-}
+const logout = async (req, res) => {
+  res.status(200).json({ success: true, message: "Logged out successfully" });
+};
 
 module.exports = {
+	register,
+	login,
+	getProfile,
+	updateProfile,
 	getAllUsers,
 	getUserById,
+	changePassword,
+	deactivateUser,
 	createUser,
-	updateUser,
-	deleteUserById
-};
+	logout,
+}
+
+// module.exports = {
+// 	getAllUsers,
+// 	getUserById,
+// 	register,
+// 	updateUser,
+// 	deleteUserById
+// };
